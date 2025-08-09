@@ -1,7 +1,7 @@
 import express from 'express';
-import {getFacilities,createFacility,updateFacility,deleteFacility} from '../controllers/facilityController.js';
-import auth from '../middleware/auth.js';
-import roleMiddleware from '../middleware/role.js';
+import {getFacilities,createFacility,updateFacility,deleteFacility} from '../../controllers/Admin/facilityController.js';
+import auth from '../../middleware/auth.js';
+import roleMiddleware from '../../middleware/role.js';
 
 const router = express.Router();
 

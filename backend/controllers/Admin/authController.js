@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import User from '../models/User.js';
+import User from '../../models/Admin/User.js';
 import { validationResult } from 'express-validator';
 
  const login = async (req, res) => {
@@ -11,7 +11,7 @@ import { validationResult } from 'express-validator';
     }
 
     const { username, password } = req.body;
-    const user = await User.findOne({ username }).populate('employee enterprises');
+    const user = await User.findOne({ username }).populate('employee');
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }

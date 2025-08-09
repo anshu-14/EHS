@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import connectDB from './config/db.js';
-import EnterpriseStructure from './models/EnterpriseStructure.js';
-import FacilityStructure from './models/FacilityStructure.js';
+import EnterpriseStructure from './models/Admin/EnterpriseStructure.js';
+import FacilityStructure from './models/Admin/FacilityStructure.js';
 import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 const initStructures = async () => {
