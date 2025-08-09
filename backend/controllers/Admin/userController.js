@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
-import User from '../models/User.js';
-import Employee from '../models/Employee.js';
+import User from '../../models/Admin/User.js';
+import Employee from '../../models/Admin/Employee.js';
 
 export const getUsers = async (req, res) => {
   try {

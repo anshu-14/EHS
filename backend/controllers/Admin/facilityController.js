@@ -1,6 +1,6 @@
-import Facility from '../models/Facility.js';
-import FacilityStructure from '../models/FacilityStructure.js';
-import Enterprise from '../models/Enterprise.js';
+import Facility from '../../models/Admin/Facility.js';
+import FacilityStructure from '../../models/Admin/FacilityStructure.js';
+import Enterprise from '../../models/Admin/Enterprise.js';
 
 export const getFacilities = async (req, res) => {
   try {

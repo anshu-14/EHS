@@ -1,5 +1,5 @@
-import Enterprise from '../models/Enterprise.js';
-import EnterpriseStructure from '../models/EnterpriseStructure.js';
+import Enterprise from '../../models/Admin/Enterprise.js';
+import EnterpriseStructure from '../../models/Admin/EnterpriseStructure.js';
 
 export const getEnterprises = async (req, res) => {
   try {

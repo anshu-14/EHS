@@ -1,9 +1,9 @@
 import express from 'express';
-import authRoutes from './auth.js';
-import enterpriseRoutes from './enterprise.js';
-import facilityRoutes from './facility.js';
-import employeeRoutes from './employee.js';
-import userRoutes from './user.js';
+import authRoutes from './Admin/auth.js';
+import enterpriseRoutes from './Admin/enterprise.js';
+import facilityRoutes from './Admin/facility.js';
+import employeeRoutes from './Admin/employee.js';
+import userRoutes from './Admin/user.js';
 
 const router = express.Router();
 

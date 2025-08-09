@@ -1,5 +1,5 @@
-import Employee from '../models/Employee.js';
-import User from '../models/User.js';
+import Employee from '../../models/Admin/Employee.js';
+import User from '../../models/Admin/User.js';
 import bcrypt from 'bcryptjs';
 import exceljs from 'exceljs';
 

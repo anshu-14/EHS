@@ -1,7 +1,7 @@
 import express from 'express';
-import { getUsers, createUser, updateUser, deleteUser } from '../controllers/userController.js';
-import auth from '../middleware/auth.js';
-import roleMiddleware from '../middleware/role.js';
+import { getUsers, createUser, updateUser, deleteUser } from '../../controllers/Admin/userController.js';
+import auth from '../../middleware/auth.js';
+import roleMiddleware from '../../middleware/role.js';
 
 const router = express.Router();
 

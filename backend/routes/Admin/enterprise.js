@@ -1,7 +1,7 @@
 import express from 'express';
-import {getEnterprises,createEnterprise,updateEnterprise,deleteEnterprise,disableEnterprise} from '../controllers/enterpriseController.js';
-import auth from '../middleware/auth.js';
-import roleMiddleware from '../middleware/role.js';
+import {getEnterprises,createEnterprise,updateEnterprise,deleteEnterprise,disableEnterprise} from '../../controllers/Admin/enterpriseController.js';
+import auth from '../../middleware/auth.js';
+import roleMiddleware from '../../middleware/role.js';
 
 const router = express.Router();
 
