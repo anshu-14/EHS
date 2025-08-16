@@ -11,12 +11,14 @@ dotenv.config();
 
 // Initialize Express app
 const app = express();
+const origins=process.env.CORS_ORIGIN?.split(',').map(o=>o.trim());
 
 // Connect to MongoDB
 connectDB();
 
 // Middleware
-app.use(cors());
+//app.use(cors());
+app.use(cors({origin:origins,credentials:true}));
 app.use(express.json());
 
 // Routes
