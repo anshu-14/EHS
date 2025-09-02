@@ -51,12 +51,10 @@ export function LoginForm({ className, ...props }) {
       .then((response) => {
         navigate("/dashboard");
         toast.success("Login successful!");
-       // useNavigate()("/dashboard");
-        // Handle successful login, e.g., redirect or update state
+
       })
       .catch((error) => {
         toast.error("Login failed: ");
-        // Handle login failure, e.g., show error message
       });
   }
 
