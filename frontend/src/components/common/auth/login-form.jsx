@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import axios from "@/axios/axios"
+import axios from "@/axios/axios";
+import { useAuth } from "@/context/auth-context";
 import {
   Form,
   FormControl,
@@ -23,6 +24,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const formSchema = z.object({
   username: z.string().min(1, {
     message: "Username is required.",
@@ -31,6 +33,9 @@ const formSchema = z.object({
 });
 
 export function LoginForm({ className, ...props }) {
+  const { login ,isLoggedIn} = useAuth();
+    const [loading, setLoading] = useState(false);
+
    const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -39,23 +44,23 @@ export function LoginForm({ className, ...props }) {
       password: "",
     },
   });
-  function onSubmit(data) {
-    // toast("You submitted the following values", {
-    //   description: (
-    //     <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // });
-    axios.post("/auth/login",data)
-      .then((response) => {
-        navigate("/dashboard");
-        toast.success("Login successful!");
-
-      })
-      .catch((error) => {
-        toast.error("Login failed: ");
+  async function onSubmit(data) {
+    if (loading) return; 
+    setLoading(true);
+    try{
+       const response = await axios.post("/auth/login", data);
+      login(response.data.token, response.data.user);
+      navigate('/dashboard'); 
+      toast.success("Login successful!", {
+        description: `Welcome, ${response.data.user.username}!`,
       });
+    }
+    catch(error){
+      toast.error("Login failed. Please check your credentials and try again.");
+    }
+    finally {
+      setLoading(false); 
+    }
   }
 
   return (
@@ -84,9 +89,6 @@ export function LoginForm({ className, ...props }) {
                         <FormControl>
                           <Input placeholder="Username" {...field} />
                         </FormControl>
-                        {/* <FormDescription>
-                This is your public display name.
-              </FormDescription> */}
                         <FormMessage />
                       </FormItem>
                     )}
@@ -100,15 +102,12 @@ export function LoginForm({ className, ...props }) {
                         <FormControl>
                           <Input placeholder="***" {...field} />
                         </FormControl>
-                        {/* <FormDescription>
-                This is your public display name.
-              </FormDescription> */}
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                   <div className="flex flex-col gap-3">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" disabled={loading} loading={loading}>Submit</Button>
                   </div>
                 </form>
               </Form>

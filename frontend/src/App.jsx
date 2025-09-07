@@ -12,6 +12,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Routes>
         <Route path="/" element={<LoginForm/>} />
+        <Route path="/login" element={<LoginForm/>} />
         <Route element={<AppLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/enterprise-structure" element={<EnterpriseStructure />} />

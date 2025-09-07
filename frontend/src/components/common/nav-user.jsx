@@ -1,4 +1,3 @@
-"use client"
 
 import {
   BadgeCheck,
@@ -29,11 +28,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { useAuth } from "@/context/auth-context";
+import { Button } from "../ui/button";
 
 export function NavUser({
   user
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+  const { logout } = useAuth();
 
   return (
     <SidebarMenu>
@@ -85,8 +87,10 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
+              <Button variant="ghost" className="w-full" onClick={logout}>
               <LogOut />
               Log out
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
